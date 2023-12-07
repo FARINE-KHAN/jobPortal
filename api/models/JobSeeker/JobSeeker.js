@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 
 const jobSeekerSchema = new mongoose.Schema(
   {
-    fullName:{
+    firstName:{
+        type:String,
+        required:true
+    },
+    lastName:{
         type:String,
         required:true
     },
@@ -10,13 +14,16 @@ const jobSeekerSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    phone:{
+      type:Number,
+      required:true
+    },
     password: {
       type: String,
       required: true,
     },
     dob:{
-        type:Date,
-        required:true
+        type:Date
     },
     deleteAcc: {
       type: Boolean,
@@ -26,4 +33,4 @@ const jobSeekerSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Jobseeker", jobSeekerSchema);
+module.exports = mongoose.model("JobSeeker", jobSeekerSchema);
