@@ -9,7 +9,7 @@ const JDSchema = new mongoose.Schema(
     location: { type: String },
     jobType: { type: String }, //dropdown (full-time, part-time, contract)
     contractPeriod: { type: Number }, //dropdown (max-5 years)
-    postedDate: { type: String }, // date
+    postedDate: { type: Date }, // date
     totalOpening: { type: Number },
     totalApplied: { type: Number }, //autoIncrement
     jobHighlights: { type: String }, //points

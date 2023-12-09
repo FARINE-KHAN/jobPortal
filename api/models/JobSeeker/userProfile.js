@@ -5,14 +5,14 @@ const userSchema = new mongoose.Schema(
   {
     userId: { type: ObjectId, ref: "JobSeeker", require: true },
     profileHeading: { type: String }, //bio
-    profileLastUpdated: {type: String},  //date
+    profileLastUpdated: {type: Date},  //date
     resume: {type: String},
     address: {
       country: { type: String }, //dropdown
       city: { type: String },
       pincode: { type: Number },
     },
-    age: { type: Number }, //autoCalculation
+    age: { type: Number }, //autoCalculation from jobSeeker
     maritalStatus: { type: String }, //options
     gender: { type: String }, //options
     careerBreak: { type: Boolean }, //options
@@ -25,12 +25,12 @@ const userSchema = new mongoose.Schema(
       courseType: { type: String }, //options
       courseDuration: {
         from: {
-          year: { type: String }, //dropdown
-          month: { type: String }, //dropdown
+          year: { type: Date }, //dropdown
+          month: { type: Date }, //dropdown
         },
         to: {
-          year: { type: String }, //dropdown
-          month: { type: String }, //dropdown
+          year: { type: Date }, //dropdown
+          month: { type: Date }, //dropdown
         },
       },
       grading: { type: String }, //dropdown
@@ -43,15 +43,15 @@ const userSchema = new mongoose.Schema(
     expectedSalary: { type: String }, //dropdown
     currentDesignation: { type: String },
     totalExperience: {
-      year: { type: String }, //dropdown
-      month: { type: String }, //dropdown
+      year: { type: Date }, //dropdown
+      month: { type: Date }, //dropdown
     },
     experience: {
       companyName: { type: String },
       designation: { type: String },
       joiningDate: {
-        year: { type: String },
-        month: { type: String },
+        year: { type: Date },
+        month: { type: Date },
       },
       currentlyWorking: { type: Boolean }, // options
       annualSalary: { type: Number }, //dropdown
@@ -65,12 +65,12 @@ const userSchema = new mongoose.Schema(
       projectTitle: { type: String },
       projectStatus: { type: String, enum: ["In-progress", "Completed"] }, //options
       workedFrom: {
-        year: { type: String }, //dropdown
-        month: { type: String }, //dropdown
+        year: { type: Date }, //dropdown
+        month: { type: Date }, //dropdown
       },
       workedTill: {
-        year: { type: String }, //if workedFrom is "completed"
-        month: { type: String },
+        year: { type: Date }, //if workedFrom is "completed"
+        month: { type: Date },
       },
       details: { type: String },
       skillsUsed: { type: String },
