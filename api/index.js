@@ -5,7 +5,8 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser"
 import cors from "cors";
 dotenv.config();
-import { routes } from './router';
+import { routes } from './router.js';
+import userRoute from './routes/user.js'
 
 app.use(express.json())
 app.use(cookieParser())
@@ -22,6 +23,7 @@ const connectMongoDB= async()=>{
     }
 }
 
+app.use("/api",userRoute)
 
 app.listen(8900,()=>{
     connectMongoDB()

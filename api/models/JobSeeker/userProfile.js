@@ -1,12 +1,33 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const userSchema = new mongoose.Schema(
   {
-    userId: { type: ObjectId, ref: "JobSeeker", require: true },
+    firstName: {
+      type: String,
+    },
+    lastName: {
+      type: String,
+    },
+    email: {
+      type: String,
+    },
+    phone: {
+      type: Number,
+    },
+    password: {
+      type: String,
+    },
+    dob: {
+      type: Date,
+    },
+    deleteAcc: {
+      type: Boolean,
+      default: false,
+    },
     profileHeading: { type: String }, //bio
-    profileLastUpdated: {type: Date},  //date
-    resume: {type: String},
+    profileLastUpdated: { type: Date }, //date
+    resume: { type: String },
     address: {
       country: { type: String }, //dropdown
       city: { type: String },
@@ -81,8 +102,8 @@ const userSchema = new mongoose.Schema(
       url: { type: String },
     },
     certificates: {
-      certificateName: {type: String},
-      certificateId: {type: String},
+      certificateName: { type: String },
+      certificateId: { type: String },
       certificateUrl: { type: String },
     },
     languages: { type: String },
@@ -90,4 +111,4 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("UserProfile", userSchema);
+export default mongoose.model("UserProfile", userSchema);

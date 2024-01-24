@@ -1,0 +1,48 @@
+.custom-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    gap: 2rem;
+}
+
+.custom-modal .body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.body .items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.body .items input {
+    width: 20vw;
+}
+.custom-modal button {
+    width: 30%;
+}
+@media (max-width:768px) {
+    .custom-modal .body {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .body .items {
+        gap: 1rem;
+    }
+
+    .body .items input {
+        width: 100%;
+    }
+
+    .custom-modal button {
+        width: 80%;
+    }
+}
