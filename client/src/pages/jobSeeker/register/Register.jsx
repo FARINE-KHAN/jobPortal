@@ -28,7 +28,8 @@ const Register = () => {
   };
   return (
     <div className="b">
-      <Loading/>
+      {loading &&   <Loading/>}
+    
       <div className="custom-modal">
         <p className="text-2xl font-bold">Register</p>
         <div className="body">
