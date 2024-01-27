@@ -1,0 +1,178 @@
+.home {
+    height: 100dvh;
+}
+
+.home .header {
+    height: 70%;
+}
+
+.home .header h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.home .header p {
+    width: 65%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.home .status {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 70%;
+    flex-wrap: wrap;
+}
+
+.home .status img {
+    width: 15vw;
+}
+
+.home .status .item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.home .status .item h4 {
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.home .company {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    height: 70%;
+    width: 100%;
+}
+
+.home .company h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    width: 60%;
+    text-align: center;
+}
+
+.home .company .logos img {
+    width: 10vw;
+    max-width: 150px;
+}
+
+.home .company .logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.home .end-section {
+    height: 50%;
+    justify-content: center;
+}
+
+.home .end-section h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.home .end-section h3 {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .home .header {
+        /* height: auto; */
+        gap: 3rem;
+    }
+
+    .home .header h1 {
+        font-size: 25px;
+        width: auto;
+        text-align: center;
+    }
+
+    .home .header p {
+        width: 90%;
+        font-size: medium;
+    }
+
+    .header .buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 70%;
+    }
+
+    .home .status {
+        height: auto;
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .home .status img {
+        width: 60vw;
+    }
+
+    .home .company h1 {
+        font-size: large;
+        width: 90%;
+    }
+
+    .home .company .logos {
+        flex-wrap: wrap;
+        gap: 3rem;
+    }
+
+    .home .company .logos img {
+        width: 15vw;
+    }
+
+    .home .end-section {
+        height: auto;
+        gap: 2rem;
+    }
+
+    .home .end-section h1 {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    .home .end-section h3 {
+        font-size: medium;
+        width: 90%;
+        text-align: center;
+    }
+
+    .home .end-section button {
+        width: 50%;
+        border-radius: 25px;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home .company h1 {
+        font-size: large;
+        width: 90%;
+    }
+
+    .home .company .logos {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    .home .company .logos img {
+        width: 20vw;
+    }
+
+    .home .company .logos img:nth-child(7) {
+        width: 100%;
+    }
+}

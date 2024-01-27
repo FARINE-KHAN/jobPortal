@@ -1,0 +1,16 @@
+nav .b {
+    width: 100vw;
+    height: 100dvh;
+}
+
+nav {
+    /* position: fixed !important; */
+}
+
+.bg-background\/70 {
+    background-color: transparent;
+}
+
+nav img {
+    height: 5rem;
+}
