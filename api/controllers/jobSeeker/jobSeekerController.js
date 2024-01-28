@@ -22,12 +22,35 @@ export const createNewUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     req.body.password = await bcrypt.hash(req.body.password, salt);
     const userData = await userProfileModel.create(req.body);
-    res.status(201).json("data inserted");
+    console.log(userData)
+    res.status(201).json(userData);
   } catch (error) {
     return res.status(500).json(error.message);
   }
 };
+export const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
 
+    if (!email) {
+      return res.status(400).json({ msg: "Please provide email" });
+    }
+    if (!password) {
+      return res.status(400).json({ msg: "Please provide password" });
+    }
+    let getUser = await userProfileModel.findOne({ email });
+    if (!getUser)
+      return res.status(401).json("Email or Password is incorrect.");
+
+    let matchPassword = await bcrypt.compare(password, getUser.password);
+    if (!matchPassword)
+      return res.status(401).json("Email or Password is incorrect.");
+    
+    return res.status(200).json(getUser);
+  } catch (error) {
+    return res.status(500).json(error.message);
+  }
+};
 export const fetchAllUser = async (req, res) => {
   try {
     const getuser = await userProfileModel.find();

@@ -23,7 +23,7 @@ const connectMongoDB= async()=>{
     }
 }
 
-app.use("/api",userRoute)
+app.use("/api/job-seeker",userRoute)
 
 app.listen(8900,()=>{
     connectMongoDB()
