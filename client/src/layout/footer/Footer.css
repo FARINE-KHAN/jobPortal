@@ -1,0 +1,152 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 3rem;
+}
+
+.footer .header {
+    width: 90vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer .header .right-head {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer .body {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.footer .body .web {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.footer .body .web h2 {
+    color: var(--secondary);
+}
+
+.footer .body .web p {
+    margin-top: 2rem;
+    color: gray;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.footer .mid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer .mid h6 {
+    font-size: 15px;
+}
+
+.footer .body h6:hover {
+    color: #BA68C8;
+    cursor: pointer;
+}
+
+.footer .mid h5:nth-child(1) {
+    font-size: 20px;
+}
+
+.footer .body h5:hover {
+    color: #BA68C8;
+    cursor: pointer;
+}
+
+.footer .social {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 20px;
+}
+
+.footer .social .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer .social i {
+    font-size: larger;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.footer .footer-end {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.footer .footer-end p {
+    color: gray;
+    font-size: small;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        gap: 5rem;
+    }
+
+    .footer .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .footer .header h1 {
+        font-size: 21px;
+    }
+
+    .footer .header .right-head {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .footer .header button:nth-child(1),
+    .footer .header button:nth-child(2) {
+        padding: 10px 15px;
+        font-size: small;
+    }
+
+    .footer .body {
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 1rem;
+        width: auto;
+    }
+
+    .footer .body .web h2 {
+        font-size: 15px;
+    }
+
+    .footer .body .web p {
+        font-size: 10px;
+        margin-top: 1rem;
+    }
+
+    .footer .mid h5:nth-child(1) {
+        font-size: 16px;
+    }
+
+    .footer .social {
+        font-size: 18px;
+        gap: 0.5rem;
+    }
+}

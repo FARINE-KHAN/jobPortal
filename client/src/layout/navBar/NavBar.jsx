@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import "./NavBar.css";
 import {
   Navbar,
@@ -9,15 +9,15 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Button,
-  Link,
+  // Link,
 } from "@nextui-org/react";
-import { useNavigate } from "react-router-dom";
-import NavModal from "../../components/nav-modal/NavModal";
-import { newSessionData } from "../../utils/commonFunctions";
+import { Link, useNavigate } from "react-router-dom";
+import NavModal from "../../components/modals/form-modal/FormModal.jsx"
+import { deleteSessionData, newSessionData, useSessionData } from "../../utils/commonFunctions";
 import logo from "../../assets/images/jp-logo.png";
 
 export default function NavBar() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useReducer((current) => !current, false);
   const [modal, setModal] = useState(false);
   const [pageId, setPageId] = useState("");
   const [mode, setMode] = useState(true);
@@ -31,14 +31,26 @@ export default function NavBar() {
     setModal(true);
   };
 
+  let user = useSessionData("user");
+  const handleLogout =()=>{
+    console.log("innn")
+    openModal("Logout")
+  }
   const menuItems = [
+    { label: "Home", path: "/" },
     { label: "About", path: "/about" },
     { label: "Contact Us", path: "/contact" },
-    { label: "My Settings", path: "/settings" },
-    { label: "Help & Feedback", path: "/help" },
-    { label: "Log Out", path: "/logout" },
+    {
+      label: user ? "Logout" : "Login",
+      path: user ? "" : "/job-seeker/login",
+    },
   ];
-
+  const handleChange = (item) => {
+    setIsMenuOpen(false);
+    if (item === "Logout") {
+      openModal("Logout");
+    }
+  };
   const changeMode = () => {
     setMode(!mode);
     if (mode) {
@@ -51,15 +63,13 @@ export default function NavBar() {
   };
 
   useEffect(() => {
+    console.log("inn")
     document.documentElement.classList.toggle("transparent-bg", !mode);
     newSessionData("dark-mode", mode);
   }, [mode]);
 
   return (
-    <Navbar
-      onMenuOpenChange={setIsMenuOpen}
-      className={mode ? "light-mode" : "dark-mode"}
-    >
+    <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       {modal && (
         <NavModal
           setModal={setModal}
@@ -72,7 +82,7 @@ export default function NavBar() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <NavbarBrand>
+        <NavbarBrand id="header">
           <img
             src={logo}
             alt="logo"
@@ -84,6 +94,7 @@ export default function NavBar() {
             onClick={() => handleNavigation("/")}
             title="Home"
             className="font-bold text-inherit cursor-pointer"
+            id="title"
           >
             Job-Portal
           </p>
@@ -92,40 +103,41 @@ export default function NavBar() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
+          <Link color="foreground" to="/">
+            Home
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
+          <Link to="/about" aria-current="page">
+            About 
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
+          <Link color="foreground" to="/contact-us">
+            Contact Us
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Button
-            onClick={() => openModal("login")}
-            color="primary"
-            variant="ghost"
-          >
-            Login
-          </Button>
+      <NavbarItem className="hidden lg:flex">
+          {user ? (
+            <Button
+              onClick={() => openModal("Logout")}
+              color="primary"
+              variant="ghost"
+            >
+              Logout
+            </Button>
+          ) : (
+            <Button
+              onClick={() => openModal("login")}
+              color="primary"
+              variant="ghost"
+            >
+              Login
+            </Button>
+          )}
         </NavbarItem>
-        {/* <NavbarItem>
-          <Button
-            onClick={() => openModal("register")}
-            color="primary"
-            variant="flat"
-          >
-            Sign Up
-          </Button>
-        </NavbarItem> */}
         <NavbarItem>
           <Button color="primary" onClick={changeMode}>
             {mode ? (
@@ -148,8 +160,10 @@ export default function NavBar() {
                   : "foreground"
               }
               className="w-full"
-              href={menuItem.path}
+              to={menuItem.path}
               size="lg"
+              onClick={()=>{handleChange(menuItem.label)}}
+            
             >
               {menuItem.label}
             </Link>

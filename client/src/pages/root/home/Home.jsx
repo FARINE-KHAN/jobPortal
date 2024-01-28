@@ -4,8 +4,11 @@ import "./Home.css";
 import application from "../../../assets/svg/application.svg";
 import interview from "../../../assets/svg/interview.svg";
 import placed from "../../../assets/svg/placed.svg";
+import Footer from "../../../layout/footer/Footer";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate= useNavigate()
   return (
     <div className="home">
       <div className="header flex flex-col justify-center items-center w-100 gap-6">
@@ -15,10 +18,10 @@ function Home() {
           connecting you to diverse career opportunities
         </p>
         <div className="buttons flex gap-10">
-          <Button color="primary" variant="shadow" className="p-6">
+          <Button onClick={()=>navigate("/job-seeker/login")} color="primary" variant="shadow" className="p-6">
             Find Jobs
           </Button>
-          <Button color="primary" variant="ghost" className="text-bold p-6">
+          <Button color="primary" onClick={()=>navigate("/recruiter/login")} variant="ghost" className="text-bold p-6">
             Hire Talent
           </Button>
         </div>
@@ -78,8 +81,9 @@ function Home() {
       <div className="end-section w-100 flex flex-col items-center gap-5">
         <h1>Ready to realize your true potential?</h1>
         <h3>70% techies find their perfect opportunities within 10 with a help of us.</h3>
-        <Button color="primary" variant="shadow" className="p-6">Get Started</Button>
+        <Button color="primary" variant="shadow" className="p-6" onClick={()=>navigate("/job-seeker/login")} >Get Started</Button>
       </div>
+      <Footer />
     </div>
   );
 }

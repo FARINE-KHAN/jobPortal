@@ -17,6 +17,11 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
+    width: 100%;
+
+}
+.buttons button{
+    width: 100%;
 }
 .main .custom-modal h1{
     position: absolute;

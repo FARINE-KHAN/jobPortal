@@ -14,3 +14,11 @@ nav {
 nav img {
     height: 5rem;
 }
+@media(max-width:768px){
+   nav #title{
+        display: none;
+    }
+    nav #header{
+        width: 5vw !important;
+    }
+}

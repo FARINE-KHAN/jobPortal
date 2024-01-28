@@ -1,3 +1,4 @@
 export const serverVariables={
-    JobSeekerRegister:"/register"
+    JobSeekerRegister:"job-seeker/register",
+    JobSeekerLogin:"job-seeker/login",
 }

@@ -28,6 +28,7 @@
 .custom-modal button {
     width: 30%;
 }
+
 @media (max-width:768px) {
     .custom-modal .body {
         flex-direction: column;
@@ -44,5 +45,14 @@
 
     .custom-modal button {
         width: 80%;
+    }
+    .body .items button {
+        width: 2vw;
+    }
+    .body .items i {
+        font-size: 14px;
+        position: absolute;
+        right: 12px;
+        top:20px;
     }
 }

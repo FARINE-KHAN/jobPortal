@@ -10,14 +10,13 @@ export const usePostAPI =()=>{
         setLoading(true);
         try {
             const res = await axios.post(API_URL+url,inputs);
-            setData(res.data);
-            setError(null);
+            setLoading(false);
+          return  setData(res);
+            // setError(null);
         } catch (error) {
-            setTimeout(()=>{
-                setError(error.response.data);
-            },3000)
+            setLoading(false);
+           return setError(error);
         }
-        setLoading(false);
      }
      return { data, error, loading, postData, setError };
 };
