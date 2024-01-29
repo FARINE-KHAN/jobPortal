@@ -22,7 +22,7 @@ export const createNewUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     req.body.password = await bcrypt.hash(req.body.password, salt);
     const userData = await userProfileModel.create(req.body);
-    console.log(userData)
+
     res.status(201).json(userData);
   } catch (error) {
     return res.status(500).json(error.message);
@@ -33,10 +33,10 @@ export const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     if (!email) {
-      return res.status(400).json({ msg: "Please provide email" });
+      return res.status(400).json("Please provide email");
     }
     if (!password) {
-      return res.status(400).json({ msg: "Please provide password" });
+      return res.status(400).json("Please provide password" );
     }
     let getUser = await userProfileModel.findOne({ email });
     if (!getUser)

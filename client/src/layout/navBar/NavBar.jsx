@@ -9,11 +9,10 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Button,
-  // Link,
 } from "@nextui-org/react";
 import { Link, useNavigate } from "react-router-dom";
-import NavModal from "../../components/modals/form-modal/FormModal.jsx"
-import { deleteSessionData, newSessionData, useSessionData } from "../../utils/commonFunctions";
+import NavModal from "../../components/modals/form-modal/FormModal.jsx";
+import { newSessionData, useSessionData } from "../../utils/commonFunctions";
 import logo from "../../assets/images/jp-logo.png";
 
 export default function NavBar() {
@@ -32,10 +31,7 @@ export default function NavBar() {
   };
 
   let user = useSessionData("user");
-  const handleLogout =()=>{
-    console.log("innn")
-    openModal("Logout")
-  }
+
   const menuItems = [
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
@@ -44,13 +40,22 @@ export default function NavBar() {
       label: user ? "Logout" : "Login",
       path: user ? "" : "/job-seeker/login",
     },
+    {
+      label: mode ? "Dark Mode" : "Light Mode",
+      path: "",
+    },
   ];
+
   const handleChange = (item) => {
     setIsMenuOpen(false);
     if (item === "Logout") {
       openModal("Logout");
     }
+    if (item === "Dark Mode" || item === "Light Mode") {
+      changeMode();
+    }
   };
+
   const changeMode = () => {
     setMode(!mode);
     if (mode) {
@@ -63,7 +68,6 @@ export default function NavBar() {
   };
 
   useEffect(() => {
-    console.log("inn")
     document.documentElement.classList.toggle("transparent-bg", !mode);
     newSessionData("dark-mode", mode);
   }, [mode]);
@@ -109,7 +113,7 @@ export default function NavBar() {
         </NavbarItem>
         <NavbarItem isActive>
           <Link to="/about" aria-current="page">
-            About 
+            About
           </Link>
         </NavbarItem>
         <NavbarItem>
@@ -118,8 +122,8 @@ export default function NavBar() {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end">
-      <NavbarItem className="hidden lg:flex">
+      <NavbarContent justify="end" id="mode">
+        <NavbarItem className="hidden lg:flex">
           {user ? (
             <Button
               onClick={() => openModal("Logout")}
@@ -152,18 +156,18 @@ export default function NavBar() {
         {menuItems.map((menuItem, index) => (
           <NavbarMenuItem key={`${menuItem.label}-${index}`}>
             <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
+              className={
+                index === 4
+                  ? "text-primary"
+                  : index === menuItems.length - 2
+                  ? "text-danger"
+                  : "text-foreground"
               }
-              className="w-full"
               to={menuItem.path}
               size="lg"
-              onClick={()=>{handleChange(menuItem.label)}}
-            
+              onClick={() => {
+                handleChange(menuItem.label);
+              }}
             >
               {menuItem.label}
             </Link>
