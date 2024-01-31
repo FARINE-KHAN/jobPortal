@@ -11,6 +11,8 @@ const Contact = React.lazy(() => import("./pages/root/contact/Contact"));
 //jobseeker
 const JobSeekerRegister = React.lazy(() => import("./pages/jobSeeker/register/Register"));
 const JobSeekerLogin = React.lazy(() => import("./pages/jobSeeker/login/Login"));
+const JobSeekerProfile = React.lazy(() => import("./pages/jobSeeker/profile/Profile"));
+
 
 const NavBar = React.lazy(() => import("./layout/navBar/NavBar"));
 
@@ -29,6 +31,8 @@ const App = () => {
           {/* jobseeker */}
           <Route path="/job-seeker/register" element={<JobSeekerRegister/>} />
           <Route path="/job-seeker/login" element={<JobSeekerLogin/>} />
+          <Route path="/job-seeker/profile/:id" element={<JobSeekerProfile/>} />
+
         </Routes>
       </Suspense>
     </BrowserRouter>

@@ -14,6 +14,7 @@ import { Link, useNavigate } from "react-router-dom";
 import NavModal from "../../components/modals/form-modal/FormModal.jsx";
 import { newSessionData, useSessionData } from "../../utils/commonFunctions";
 import logo from "../../assets/images/jp-logo.png";
+import {Avatar, AvatarIcon} from "@nextui-org/react";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useReducer((current) => !current, false);
@@ -34,8 +35,10 @@ export default function NavBar() {
 
   const menuItems = [
     { label: "Home", path: "/" },
-    { label: "About", path: "/about" },
-    { label: "Contact Us", path: "/contact" },
+    {
+      label: "Profile",
+      path: user ? "/job-seeker/profile" : "/job-seeker/login",
+    },
     {
       label: user ? "Logout" : "Login",
       path: user ? "" : "/job-seeker/login",
@@ -44,16 +47,21 @@ export default function NavBar() {
       label: mode ? "Dark Mode" : "Light Mode",
       path: "",
     },
+    { label: "About", path: "/about" },
+    { label: "Contact Us", path: "/contact" },
   ];
 
   const handleChange = (item) => {
     setIsMenuOpen(false);
+
     if (item === "Logout") {
       openModal("Logout");
     }
     if (item === "Dark Mode" || item === "Light Mode") {
       changeMode();
     }
+
+ 
   };
 
   const changeMode = () => {
@@ -122,7 +130,7 @@ export default function NavBar() {
           </Link>
         </NavbarItem>
       </NavbarContent>
-      <NavbarContent justify="end" id="mode">
+      <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
           {user ? (
             <Button
@@ -142,14 +150,25 @@ export default function NavBar() {
             </Button>
           )}
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem   className="hidden lg:flex">
           <Button color="primary" onClick={changeMode}>
             {mode ? (
               <i className="fa-solid fa-sun"></i>
             ) : (
               <i className="fa-solid fa-moon"></i>
             )}
+            
           </Button>
+        </NavbarItem>
+        <NavbarItem   className="hidden lg:flex">
+        <Avatar
+        icon={<AvatarIcon />}
+        classNames={{
+          base: "bg-gradient-to-br from-[#FFB457] to-[#FF705B]",
+          icon: "text-black/80",
+        }}
+       onClick={ () => {user?navigate(`/job-seeker/profile/${user._id}`):navigate("/job-seeker/login")}}
+      />
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
