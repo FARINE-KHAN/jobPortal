@@ -1,18 +1,20 @@
-.profile{
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
- height: 100%;
- width: 100vw;
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100vw;
+    margin-top: 2rem;
 }
-.profile .profile-basic{
+
+.profile .profile-basic {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap:5rem;
+    gap: 5rem;
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
+    border-radius: 20px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -20,64 +22,87 @@
     padding: 20px;
     width: 80%;
     height: 40vh;
-     
+
 }
+
 .profile-basic .profile-image {
-   margin-left: 3rem;
-    
+    margin-left: 3rem;
+
 }
-.profile-basic .profile-image img{
+
+.profile-basic .profile-image img {
     width: 22vw;
     border-radius: 50%;
-    
+
 }
-.profile .basic-info{
-     display: flex;
-     flex-direction: column;
-     height: 80% ;
-     width: 100%;
+
+.profile .basic-info {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    width: 100%;
 }
-.basic-info .username{
+
+.basic-info .username {
     display: flex;
     border-bottom: 1px solid grey;
     width: 100%;
     justify-content: space-between;
 }
-.basic-info .username h1{
-  font-size:  1.5rem;
-  font-weight: bold;
-}
-.basic-info .username  span{
-    font-size:  15px ; 
-    color: gray; 
-  }
 
-.profile .username-info{
- display: flex;
- flex-direction: column;
- gap:0.2rem;
+.basic-info .username h1 {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
-.profile .basic-details{
+
+.basic-info .username span {
+    font-size: 15px;
+    color: gray;
+}
+
+.profile .username-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.profile .basic-details {
     display: flex;
     padding: 1rem;
     /* gap: 6rem; */
 }
-.profile .basic-details .loaction{
+
+.profile .basic-details .location {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     width: 50%;
     border-right: 1px solid gray;
 }
-.profile .basic-details .contact-details{
+
+.profile .basic-details .contact-details {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     margin-left: 1rem;
-   
+
 }
-.profile .basic-details  span{
-    font-size:  15px ; 
+
+.profile .basic-details span {
+    font-size: 15px;
     color: gray;
-    margin-right: 10px; 
-  }
+    margin-right: 10px;
+}
+
+.profile .basic-info .username h1 span {
+    margin-left: 1rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.profile .basic-info .username h1 span i:hover {
+    color: #fff;
+    position: absolute;
+    font-size: 17px;
+    bottom: 0%;
+}
