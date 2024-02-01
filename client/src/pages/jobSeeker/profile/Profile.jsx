@@ -3,7 +3,7 @@ import "./profile.css";
 const Profile = () => {
   return (
     <div className="profile">
-    {/* ================== Basic Information =========================== */}
+      {/* ================== Basic Information =========================== */}
       <div className="profile-basic">
         <div className="profile-image">
           <img
@@ -39,34 +39,34 @@ const Profile = () => {
                 Mumbai,India
               </h1>
               <h1>
-              <span>
-              <i className="fa-solid fa-briefcase"></i>
+                <span>
+                  <i className="fa-solid fa-briefcase"></i>
                 </span>
-               1 years, 6 months
+                1 years, 6 months
               </h1>
               <h1>
-              <span>
-              <i className="fa-solid fa-wallet"></i>
+                <span>
+                  <i className="fa-solid fa-wallet"></i>
                 </span>
-               $ 50,000.
+                $ 50,000.
               </h1>
             </div>
             <div className="contact-details">
-            <h1>
+              <h1>
                 <span>
                   <i className="fa-solid fa-phone"></i>
                 </span>
                 8668879497
               </h1>
               <h1>
-              <span>
-              <i className="fa-regular fa-envelope"></i>
+                <span>
+                  <i className="fa-regular fa-envelope"></i>
                 </span>
-               farine@gmail.com
+                farine@gmail.com
               </h1>
               <h1>
-              <span>
-              <i className="fa-regular fa-calendar"></i>
+                <span>
+                  <i className="fa-regular fa-calendar"></i>
                 </span>
                 1 Month Notice Period
               </h1>
@@ -76,6 +76,48 @@ const Profile = () => {
       </div>
 
       {/* ================== Main Body =========================== */}
+      <div className="profile-body">
+        <div className="quicklinks">
+          <h1 >Quick Links</h1>
+          <div className="links">
+           <div className="items">
+            <h2>Resume</h2><button>Update</button>
+           </div>
+           <div className="items">
+            <h2>Resume headline</h2><button>Update</button>
+           </div>
+           <div className="items">
+            <h2>Skills</h2><button>Update</button>
+           </div>
+           <div className="items">
+            <h2>Employment</h2><button>Update</button>
+           </div>
+           <div className="items">
+            <h2>Education</h2><button>Update</button>
+           </div>
+           <div className="items">
+            <h2>Profile Summary</h2><button>Update</button>
+           </div>
+           <div className="items">
+            <h2>Projects</h2><button>Update</button>
+           </div>
+           <div className="items">
+            <h2>Accomplishment</h2><button>Update</button>
+           </div>
+           <div className="items">
+            <h2>Career Profile</h2><button>Update</button>
+           </div>
+           <div className="items">
+            <h2>Personal details</h2><button>Update</button>
+           </div>
+           
+          </div>
+        </div>
+        <div className="quicklinks-details">
+
+        </div>
+
+      </div>
     </div>
   );
 };

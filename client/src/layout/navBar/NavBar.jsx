@@ -37,18 +37,18 @@ export default function NavBar() {
     { label: "Home", path: "/" },
     {
       label: "Profile",
-      path: user ? "/job-seeker/profile" : "/job-seeker/login",
+      path: user ? `/job-seeker/profile/${user._id}` : "/job-seeker/login",
     },
+    {
+      label: mode ?  "Light Mode" :"Dark Mode",
+      // path: "",
+    },
+    { label: "About", path: "/about" },
+    { label: "Contact Us", path: "/contact" },
     {
       label: user ? "Logout" : "Login",
       path: user ? "" : "/job-seeker/login",
     },
-    {
-      label: mode ? "Dark Mode" : "Light Mode",
-      path: "",
-    },
-    { label: "About", path: "/about" },
-    { label: "Contact Us", path: "/contact" },
   ];
 
   const handleChange = (item) => {
@@ -61,7 +61,6 @@ export default function NavBar() {
       changeMode();
     }
 
- 
   };
 
   const changeMode = () => {
@@ -176,9 +175,9 @@ export default function NavBar() {
           <NavbarMenuItem key={`${menuItem.label}-${index}`}>
             <Link
               className={
-                index === 4
+                index === 2
                   ? "text-primary"
-                  : index === menuItems.length - 2
+                  : index === menuItems.length - 1
                   ? "text-danger"
                   : "text-foreground"
               }

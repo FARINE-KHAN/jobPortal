@@ -6,6 +6,7 @@
     height: 100%;
     width: 100vw;
     margin-top: 2rem;
+    gap: 1.5rem;
 }
 
 .profile .profile-basic {
@@ -105,4 +106,110 @@
     position: absolute;
     font-size: 17px;
     bottom: 0%;
+}
+
+/* profile - body */
+.profile .profile-body {
+    width: 82.5%;
+    display: flex;
+}
+
+.profile-body .quicklinks {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    gap: 1rem;
+}
+
+.quicklinks h1 {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.quicklinks .links{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+}
+.quicklinks .links .items{
+    display: flex;
+    justify-content: space-between;
+}
+.quicklinks .links .items button{
+    color: #0070F0;
+}
+
+@media (max-width:768px) {
+    .profile {
+        height: auto;
+        width: 100%;
+    }
+
+    .profile .profile-basic {
+        height: auto;
+        width: 95%;
+        flex-direction: column;
+        gap: 2rem;
+
+    }
+
+    .profile .profile-image {
+        margin: 0%;
+    }
+
+    .profile-basic .profile-image img {
+        width: 33vw;
+    }
+
+    .basic-info .username {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    .basic-info .username h1 {
+        margin-left: 2rem;
+    }
+
+    .profile .basic-info .username h1 span i:hover {
+        position: static;
+        font-size: 15px;
+    }
+
+    .basic-info .username p {
+        margin-bottom: 2rem;
+    }
+
+    .profile .username-info {
+        text-align: center;
+    }
+
+    .profile .basic-details {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .profile .basic-details .location {
+        border: none;
+        width: 100%;
+    }
+
+    .profile .basic-details .contact-details {
+        margin-left: 0%;
+        margin-top: 0.5rem;
+    }
+
+  /* Profile Body */
+   .profile .quicklinks{
+    display:none;
+   }
+
 }
