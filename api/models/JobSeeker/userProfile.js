@@ -107,6 +107,7 @@ const userSchema = new mongoose.Schema(
       certificateUrl: { type: String },
     },
     languages: { type: String },
+    userType: { type: String, default: "job-seeker" },
   },
   { timestamps: true }
 );

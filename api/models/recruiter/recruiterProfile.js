@@ -23,7 +23,10 @@ const recruiterProfileSchema = new mongoose.Schema(
     },
     aboutCompany: { type: String },
     notification: { type: Boolean },
+    userType: { type: String, default: "recruiter" },
+
   },
+
   { timestamps: true }
 );
 

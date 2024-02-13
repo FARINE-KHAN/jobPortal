@@ -9,6 +9,7 @@ import toast from "react-hot-toast";
 import {
   newSessionData,
   postAPI,
+  useSessionData,
   validEmail,
   validPassword,
   validString,
@@ -33,7 +34,8 @@ const Login = () => {
       if (res?.status === 200) {
         newSessionData("user", res?.data);
         toast.success("Login Successfull");
-        navigate("/")
+        let user = useSessionData("user")
+        navigate(`/${user?.userType}/dashboard`);
       }
     }
   };

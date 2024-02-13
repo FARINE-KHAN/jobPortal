@@ -1,5 +1,9 @@
 import userProfileModel from "../../models/JobSeeker/userProfile.js";
 import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+dotenv.config();
+import razorpay from "razorpay"
+const instance = new razorpay({ key_id: process.env.RAZORPAY_KEY_ID, key_secret: process.env.RAZORPAY_KEY_SECRET })
 export const createNewUser = async (req, res) => {
   try {
     const { firstName, lastName, email, password } = req.body;
@@ -62,6 +66,8 @@ export const fetchAllUser = async (req, res) => {
 
 export const fetchOneUser = async (req, res) => {
   try {
+    const getOneUser =await userProfileModel.findById(req.params.userId)
+    return res.status(200).json(getOneUser)
   } catch (error) {
     return res.status(500).json(error.message);
   }
@@ -76,6 +82,24 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
+  } catch (error) {
+    return res.status(500).json(error.message);
+  }
+};
+
+export const paymentgateway = async (req, res) => {
+  try {
+   const order=await instance.orders.create({
+      amount: 50000,
+      currency: "INR",
+      receipt: "receipt#1",
+      notes: {
+          key1: "value3",
+          key2: "value2"
+      }
+      })
+      console.log(order);
+      res.status(200).json(order);
   } catch (error) {
     return res.status(500).json(error.message);
   }

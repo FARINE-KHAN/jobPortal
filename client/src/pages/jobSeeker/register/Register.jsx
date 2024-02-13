@@ -6,7 +6,7 @@ import { Input } from "@nextui-org/react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@nextui-org/react";
 import Loading from "../../../components/loading/Loading";
-import { newSessionData, postAPI, validEmail, validPassword, validString } from "../../../utils/commonFunctions";
+import { newSessionData, postAPI, useSessionData, validEmail, validPassword, validString } from "../../../utils/commonFunctions";
 import toast from "react-hot-toast";
 
 const Register = () => {
@@ -36,7 +36,8 @@ const Register = () => {
       const res = await postAPI(serverVariables.JobSeekerRegister,setLoading, inputs);
       if(res?.status===201){
         newSessionData("user",res?.data)
-        navigate("/")
+        let user = useSessionData("user")
+        navigate(`/${user?.userType}/dashboard`);
         toast.success("Registered Successfully");
       }
     }

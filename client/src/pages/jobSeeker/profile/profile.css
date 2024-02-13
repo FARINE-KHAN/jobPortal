@@ -9,6 +9,20 @@
     gap: 1.5rem;
 }
 
+.profile-background {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid #ffffff4d;
+    padding: 20px;
+    gap: 1rem;
+}
+
 .profile .profile-basic {
     display: flex;
     align-items: center;
@@ -102,23 +116,31 @@
 }
 
 .profile .basic-info .username h1 span i:hover {
-    color: #fff;
+    color: var(--blue);
     position: absolute;
     font-size: 17px;
     bottom: 0%;
 }
-
+.profile #edit-icon{
+    margin-left: 1rem;
+    cursor: pointer;
+    position: relative;
+    color: gray;
+    font-size: 15px;
+}
 /* profile - body */
 .profile .profile-body {
-    width: 82.5%;
+    width: 80%;
     display: flex;
+    gap: 1rem;
+    position: relative;
 }
 
 .profile-body .quicklinks {
-    width: 25%;
+    width: 40%;
     display: flex;
     flex-direction: column;
-    margin-left: 1rem;
+    /* margin-left: 1rem; */
     background: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -127,30 +149,182 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 20px;
     gap: 1rem;
+    height: 100%;
+    position: sticky;
+    top: 0;
 }
 
 .quicklinks h1 {
     font-size: 1.4rem;
     font-weight: bold;
 }
-.quicklinks .links{
+
+.quicklinks .links {
     display: flex;
     width: 100%;
     flex-direction: column;
     gap: 10px;
 }
-.quicklinks .links .items{
+
+.quicklinks .links .items {
     display: flex;
     justify-content: space-between;
 }
-.quicklinks .links .items button{
+
+.quicklinks .links .items button {
     color: #0070F0;
 }
+/* .quicklinks .links .items h2{
+    width: 50%;
+} */
+/* .profile-body .resume-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid #ffffff4d;
+    padding: 20px;
+    gap: 1rem;
+} */
 
+.resume-section .upload {
+    border: 2px dashed #ffffff4d;
+    border-radius: 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.resume-section .upload button {
+    font-weight: bolder;
+}
+
+.resume-section .resume-heading {
+    /* padding: 1rem; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.resume-section .upload-view {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.resume-section .cvpreview h2 {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.resume-section .cvpreview h2 span {
+    color: gray;
+    display: flex;
+    gap: 20px;
+}
+
+.resume-section .cvpreview p {
+    color: gray;
+    font-size: 14px;
+}
+
+.profile .quicklinks-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.profile .resume-headline .headline-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.profile .key-skills .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* width: 100%; */
+
+}
+
+.profile .key-skills .skills p {
+    border: 1px solid gray;
+    padding: 5px 14px;
+    border-radius: 25px;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.profile .key-skills .skills p:hover {
+    background-color: var(--blue);
+    border: 1px solid var(--blue);
+}
+
+.profile .profile-body .quicklinks-details h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+ #section-heading{
+    display: flex;
+    justify-content: space-between;
+    gap: 10rem;
+ }
+ #section-heading p{
+   color :var(--blue);
+   cursor: pointer;
+ }
+ .profile .accomplishment  {
+       font-size: 1.1rem;
+       font-weight: bolder;
+ } 
+
+ .profile .employment-section .employment-heading{
+ }
+.profile .profile-body #subheading h4{
+    color: gray;
+    font-size: 15px;
+}
+.profile .profile-body #subheading p{
+    font-size: 15px;
+}
+.profile .profile-body #subheading h2{
+    font-weight: bold;
+}
+.profile .career {
+}
+.profile .career .career-items{
+    display: grid;
+    grid-template-columns: auto auto ;
+    gap: 20px 50px;
+}
+.profile .personal .personal-items{
+    display: grid;
+    grid-template-columns: auto auto ;
+    gap: 20px 50px;
+}
+.profile .personal .personal-items h3{
+       font-weight: 600;
+}
 @media (max-width:768px) {
     .profile {
         height: auto;
         width: 100%;
+    }
+    .profile-background{
+        height: auto;
+        width: 95%;
     }
 
     .profile .profile-basic {
@@ -207,9 +381,35 @@
         margin-top: 0.5rem;
     }
 
-  /* Profile Body */
-   .profile .quicklinks{
-    display:none;
-   }
+    /* Profile Body */
+    .profile .quicklinks {
+        display: none;
+
+    }
+
+    .profile .profile-body {
+        width: 100%;
+    }
+
+    .profile .profile-body .quicklinks-details {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+    .profile .profile-body .resume-section {
+        height: auto;
+        width: 95%;
+    }
+
+    .resume-section .resume-heading p {
+        display: none;
+    }
+
+    #section-heading p span{
+        display: none;
+    }
 
 }

@@ -8,6 +8,7 @@ dotenv.config();
 import { routes } from './router.js';
 import userRoute from './routes/user.js'
 
+
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors());

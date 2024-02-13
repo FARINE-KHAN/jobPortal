@@ -44,3 +44,14 @@ export const validString = (name) => {
       setLoading(false);
     }
   }
+  export const getAPI = async(variables,setLoading,inputs)=>{
+    try {
+      setLoading(true);
+      const res = await axios.get(API_URL+variables,inputs)
+      return res;
+    } catch (error) {
+      toast.error(error?.response?.data||"Server Error");
+    }finally{
+      setLoading(false);
+    }
+  }
