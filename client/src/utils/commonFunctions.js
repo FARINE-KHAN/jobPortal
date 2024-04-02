@@ -55,3 +55,15 @@ export const validString = (name) => {
       setLoading(false);
     }
   }
+
+  export const putAPI = async(variables,setLoading,inputs)=>{
+    try {
+      setLoading(true);
+      const res = await axios.put(API_URL+variables,inputs)
+      return res;
+    } catch (error) {
+      toast.error(error?.response?.data||"Server Error");
+    }finally{
+      setLoading(false);
+    }
+  }

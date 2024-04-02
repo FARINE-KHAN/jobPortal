@@ -1,6 +1,7 @@
 import userProfileModel from "../../models/JobSeeker/userProfile.js";
 import bcrypt from "bcrypt";
 import dotenv from "dotenv";
+import mongoose from "mongoose";
 dotenv.config();
 import razorpay from "razorpay"
 const instance = new razorpay({ key_id: process.env.RAZORPAY_KEY_ID, key_secret: process.env.RAZORPAY_KEY_SECRET })
@@ -67,6 +68,22 @@ export const fetchAllUser = async (req, res) => {
 export const fetchOneUser = async (req, res) => {
   try {
     const getOneUser =await userProfileModel.findById(req.params.userId)
+    // if(req.body.)
+    // const getOneUser= await userProfileModel.aggregate([
+    //   // Your aggregation stages here, for example:
+    //   {
+    //     $match:{
+    //       _id: new mongoose.Types.ObjectId(req.params.userId),
+    //     },
+    //   },
+    //   // {
+    //   //   $project: {
+    //   //     fullName: { $concat: ["$firstName", " ", "$lastName"] },
+    //   //     email: 1,
+    //   //   }
+    //   // }
+    // ]);
+    console.log(getOneUser)
     return res.status(200).json(getOneUser)
   } catch (error) {
     return res.status(500).json(error.message);
@@ -75,6 +92,14 @@ export const fetchOneUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   try {
+    let data = req.body
+    let {firstName,lastName}=data;
+    console.log(req.body)
+    if(firstName==undefined){
+        return res.status(400).json("First name field cannot be empty")
+    }
+    let sav = await userProfileModel.findByIdAndUpdate(req.params.userId,data)
+    return res.status(200).json(sav)
   } catch (error) {
     return res.status(500).json(error.message);
   }

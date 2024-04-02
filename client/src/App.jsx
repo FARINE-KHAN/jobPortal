@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import Loading from "./components/loading/Loading";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./style.css"
 import AuthGaurd from "./utils/AuthGaurd";
 
 //root

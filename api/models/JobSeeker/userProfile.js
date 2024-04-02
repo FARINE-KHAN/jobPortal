@@ -63,11 +63,12 @@ const userSchema = new mongoose.Schema(
     currentWorkLocation: { type: String }, //dropdown
     expectedSalary: { type: String }, //dropdown
     currentDesignation: { type: String },
+    noticePeriod: { type: String }, //dropdown
     totalExperience: {
       year: { type: Date }, //dropdown
       month: { type: Date }, //dropdown
     },
-    experience: {
+    experience: [{
       companyName: { type: String },
       designation: { type: String },
       joiningDate: {
@@ -79,8 +80,8 @@ const userSchema = new mongoose.Schema(
       employmentType: { type: String }, //options
       skillsUsed: { type: String },
       description: { type: String },
-      noticePeriod: { type: String }, //dropdown
-    },
+     
+    }],
     skills: { type: String },
     projects: {
       projectTitle: { type: String },

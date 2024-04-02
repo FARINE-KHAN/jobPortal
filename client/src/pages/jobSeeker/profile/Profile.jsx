@@ -12,10 +12,15 @@ import {
   TableCell,
   getKeyValue,
 } from "@nextui-org/react";
-
+import ProfileModal from "../../../components/modals/profile-modal/ProfileModal";
+import { objForBasicInfo } from "./arrayForModal";
 const Profile = () => {
   const [loading, setLoading] = useState();
   const [data, setData] = useState("");
+  const [modalTitle ,setModalTitle ]=useState(null);
+  const [profileBasicModal, setProfileBasicModal] = useState(false);
+  const [dataForModal, setDataForModal] = useState();
+
   let user = useSessionData("user");
   let inputs;
 
@@ -27,6 +32,7 @@ const Profile = () => {
     );
     setData(res?.data);
   };
+
   useEffect(() => {
     getUserData();
   }, []);
@@ -96,10 +102,25 @@ const Profile = () => {
       label: "Speak",
     },
   ];
+  const openModal=(modalname)=>{
+    setProfileBasicModal(true);
+    if(modalname=="profile-Basic"){
+      // let objForInfo=
+      objForBasicInfo(data,setDataForModal)
+     setModalTitle("basic")
+    }
+
+  }
+  console.log(dataForModal)
+
   return (
     <div className="profile">
+      {profileBasicModal && (<ProfileModal 
+      setProfileBasicModal={setProfileBasicModal}
+      title={modalTitle}
+      responseData={dataForModal}
+      />)}
       {/* ================== Basic Information =========================== */}
-
       <div className="profile-basic">
         <div className="profile-image">
           <img
@@ -112,8 +133,8 @@ const Profile = () => {
             <div className="username-info mb-2">
               <h1>
                 {data?.firstName} {data?.lastName}
-                <span>
-                  <i className="fa-solid fa-pen"></i>
+                <span >
+                  <i className="fa-solid fa-pen" onClick={()=>openModal("profile-Basic")}></i>
                 </span>
               </h1>
               <h2>Full Stack Developer</h2>
