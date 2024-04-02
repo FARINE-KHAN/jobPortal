@@ -12,6 +12,7 @@ const Contact = React.lazy(() => import("./pages/root/contact/Contact"));
 const JobSeekerRegister = React.lazy(() => import("./pages/jobSeeker/register/Register"));
 const JobSeekerLogin = React.lazy(() => import("./pages/jobSeeker/login/Login"));
 const JobSeekerProfile = React.lazy(() => import("./pages/jobSeeker/profile/Profile"));
+const JobSeekerDashboard = React.lazy(() => import("./pages/jobSeeker/dashboard/Dashboard"));
 
 
 const NavBar = React.lazy(() => import("./layout/navBar/NavBar"));
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/job-seeker/register" element={<JobSeekerRegister/>} />
           <Route path="/job-seeker/login" element={<JobSeekerLogin/>} />
           <Route path="/job-seeker/profile/:id" element={<JobSeekerProfile/>} />
+          <Route path="/job-seeker/dashboard" element={<JobSeekerDashboard/>} />
 
         </Routes>
       </Suspense>

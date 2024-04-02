@@ -9,6 +9,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   Button,
+  Input,
 } from "@nextui-org/react";
 import { Link, useNavigate } from "react-router-dom";
 import NavModal from "../../components/modals/form-modal/FormModal.jsx";
@@ -114,18 +115,21 @@ export default function NavBar() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" to="/">
-            Home
+          <Link color="foreground" to="/job-seeker/dashboard">
+            Jobs
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link to="/about" aria-current="page">
-            About
-          </Link>
+        <Input
+          key="full"
+          radius="full"
+          placeholder="Search Jobs Here"
+          className="w-[250px]"
+        />
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" to="/contact-us">
-            Contact Us
+          <Link color="foreground" to="/job-seeker/dashboard">
+            Notifications
           </Link>
         </NavbarItem>
       </NavbarContent>
