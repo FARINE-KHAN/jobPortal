@@ -1,9 +1,37 @@
 import React, { useEffect, useState } from "react";
 import "./profileModal.css";
-import { Button, Input } from "@nextui-org/react";
+import {
+  Button,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Input,
+} from "@nextui-org/react";
 import { getAPI, putAPI, useSessionData } from "../../../utils/commonFunctions";
 import { serverVariables } from "../../../utils/serverVariables";
-import { profileLabels } from "./arrayOfInputs";
+import { profileLabels ,dropdownKeys,getOptionsByKey } from "./arrayOfInputs";
+function DropdownInput({ label, value, options, onChange }) {
+  return (
+    <Dropdown>
+      <DropdownTrigger>
+        <Button variant="shadow" className="btn-ghost" fullWidth>
+          {value || label}
+        </Button>
+      </DropdownTrigger>
+      <DropdownMenu aria-label="Dropdown Menu">
+        {options.map((option) => (
+          <DropdownItem
+            key={option.value}
+            onClick={() => onChange(option.value)}
+          >
+            {option.label}
+          </DropdownItem>
+        ))}
+      </DropdownMenu>
+    </Dropdown>
+  );
+}
 
 const ProfileModal = ({ setProfileBasicModal, title, responseData }) => {
   const [loading, setLoading] = useState();
@@ -40,16 +68,32 @@ const ProfileModal = ({ setProfileBasicModal, title, responseData }) => {
         <h1 onClick={() => setProfileBasicModal(false)}>x</h1>
         <div className="content">
           <h2>Basic Details</h2>
-          {Object.keys(data).map((key) => {
-            let lab = Object.keys(labels).indexOf(key);
-            <Input
-              key={key}
-              name={key}
-              value={data[key]}
-              label={lab}
-              onChange={(e) => handleChange(key, e.target.value)}
-              variant="underlined"
-            />;
+          <div className="input-fields">
+
+          {Object.keys(data).map((key, index) => {
+              if (dropdownKeys.includes(key)) {
+                {console.log(key)}
+                return (
+                  <DropdownInput
+                    key={key}
+                    label={labels[index]}
+                    value={data[key]}
+                    options={getOptionsByKey(key)}
+                    onChange={(value) => handleChange(key, value)}
+                  />
+                );
+              } else {
+                return (
+                  <Input
+                    key={key}
+                    name={key}
+                    value={data[key]}
+                    label={labels[index]}
+                    onChange={(e) => handleChange(key, e.target.value)}
+                    variant="underlined"
+                  />
+                );
+              }
           })}
           {/* <label>
             First Name<span style={{ color: "red" }}>*</span>
@@ -64,6 +108,8 @@ const ProfileModal = ({ setProfileBasicModal, title, responseData }) => {
           <Button onClick={handleSubmit} color="primary">
             Save
           </Button>
+          </div>
+
         </div>
       </div>
     </div>

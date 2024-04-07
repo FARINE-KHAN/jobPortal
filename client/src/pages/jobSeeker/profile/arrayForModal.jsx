@@ -5,7 +5,8 @@ export const objForBasicInfo=(data,setDataForModal)=>{
         email: data?.email,
         phone: data?.phone,
         address:data?.address,
-        totalExperience:data?.totalExperience,
+        year:data?.totalExperience?.year,
+        month:data?.totalExperience?.month,
         noticePeriod:data?.noticePeriod
     }
     return setDataForModal(newObj);

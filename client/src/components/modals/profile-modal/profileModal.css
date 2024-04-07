@@ -5,3 +5,9 @@
     width: 50%;
     height: 50%;
 } */
+.content .input-fields{
+    display: grid;
+    grid-template-columns: auto auto ;
+
+ 
+}
